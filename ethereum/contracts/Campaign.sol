@@ -1,6 +1,13 @@
 pragma solidity ^0.4.17;
 
 contract Campaign {
+    struct Request {
+        string description;
+        uint256 value;
+        address recipient;
+        bool complete;
+    } // struct is a custom data type that can be used to group together related variables of different data types
+
     address public manager;
     uint256 public minimumContribution;
     address[] public approvers;
