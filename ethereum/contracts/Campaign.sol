@@ -39,7 +39,7 @@ contract Campaign {
             value: value,
             recipient: recipient,
             complete: false
-        }); // create a new request with the data passed in the function 
+        }); // create a new request with the data passed in the function
 
         requests.push(newRequest);
     }
