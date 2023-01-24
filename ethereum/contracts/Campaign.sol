@@ -15,7 +15,7 @@ contract Campaign {
 
     modifier restricted() {
         require(msg.sender == manager); // make sure the person who is trying to create a request is the manager
-        _; // the underscore is a placeholder for the function that is going to be called
+        _; // the underscore is a placeholder for the function that is going to be called}
     }
 
     function Campaign(uint256 minimum) public {
@@ -27,5 +27,18 @@ contract Campaign {
         require(msg.value > minimumContribution); // make sure the contribution is greater than the minimum contribution
 
         approvers.push(msg.sender); // add the address of the person who contributed to the approvers array so he becomes an approver
+    }
+
+    function createRequest(
+        string description,
+        uint256 value,
+        address recipient
+    ) public restricted {
+        Request newRequest = Request({
+            description: description,
+            value: value,
+            recipient: recipient,
+            complete: false
+        });
     }
 }
