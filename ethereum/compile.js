@@ -13,7 +13,8 @@ fs.ensureDirSync(buildPath); // creates build folder if it doesn't exist
 
 for (let contract in output) {
   fs.outputJsonSync(
-    path.resolve(buildPath, contract + '.json'),
+    path.resolve(buildPath, contract.replace(':', '') + '.json'),
     output[contract]
   );
-} // writes the compiled contract to the build folder
+}
+// writes the compiled contract to the build folder
