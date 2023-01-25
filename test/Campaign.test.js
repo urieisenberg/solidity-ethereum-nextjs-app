@@ -37,4 +37,11 @@ describe('Campaigns', () => {
     assert.ok(factory.options.address); // checks if the factory has an address
     assert.ok(campaign.options.address); // checks if the campaign has an address
   });
+
+  it('marks caller as the campaign manager', async () => {
+    // checks if the manager of the campaign is the creator of the campaign 
+    const manager = await campaign.methods.manager().call();
+    assert.equal(accounts[0], manager);
+  });
+
 });
