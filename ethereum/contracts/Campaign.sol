@@ -11,7 +11,7 @@ contract Campaign {
     Request[] public requests; // array of requests that will be created by the manager
     address public manager;
     uint256 public minimumContribution;
-    address[] public approvers;
+    mapping(address => bool) public approvers;
 
     modifier restricted() {
         require(msg.sender == manager); // make sure the person who is trying to create a request is the manager
@@ -26,7 +26,7 @@ contract Campaign {
     function contribute() public payable {
         require(msg.value > minimumContribution); // make sure the contribution is greater than the minimum contribution
 
-        approvers.push(msg.sender); // add the address of the person who contributed to the approvers array so he becomes an approver
+        approvers[msg.sender] = true; // add the address of the person who contributed to the approvers mapping
     }
 
     function createRequest(
