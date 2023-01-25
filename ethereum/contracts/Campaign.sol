@@ -4,7 +4,8 @@ contract CampaignFactory {
     address[] public deployedCampaigns; // array of addresses of all deployed campaigns
 
     function createCampaign(uint minimum) public {
-        new Campaign(minimum);
+      address newCampaign = new Campaign(minimum);
+      deployedCampaigns.push(newCampaign);
     } // deploys a new instance of a campaign and stores the resulting address
 }
 
