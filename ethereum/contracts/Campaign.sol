@@ -6,6 +6,8 @@ contract Campaign {
         uint256 value;
         address recipient;
         bool complete;
+        uint approvalCount;
+        mapping(address => bool) approvals;
     } // struct is a custom data type that can be used to group together related variables of different data types
 
     Request[] public requests; // array of requests that will be created by the manager
