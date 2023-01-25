@@ -30,3 +30,11 @@ beforeEach(async () => {
     campaignAddress // address of the deployed contract
   );
 });
+
+describe('Campaigns', () => {
+  it('deploys a factory and a campaign', () => {
+    // checks if the factory and campaign were deployed
+    assert.ok(factory.options.address); // checks if the factory has an address
+    assert.ok(campaign.options.address); // checks if the campaign has an address
+  });
+});
