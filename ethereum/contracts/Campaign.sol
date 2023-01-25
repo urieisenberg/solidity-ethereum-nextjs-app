@@ -14,6 +14,7 @@ contract Campaign {
     address public manager; // the address of the person who is managing the campaign
     uint256 public minimumContribution; // the minimum amount of ether that a person has to contribute to become an approver
     mapping(address => bool) public approvers; // list of addresses for every person who has donated to the campaign
+    uint public approversCount; // number of people who have donated to the campaign    
 
     modifier restricted() {
         require(msg.sender == manager); 
@@ -29,6 +30,7 @@ contract Campaign {
         require(msg.value > minimumContribution); // make sure the contribution is greater than the minimum contribution
 
         approvers[msg.sender] = true; // add the address of the person who contributed to the approvers mapping
+        approversCount++; // increment the approversCount
     } // called when someone wants to donate money to the campaign and become an approver
 
     function createRequest(
@@ -58,7 +60,7 @@ contract Campaign {
 
     function finalizeRequest(uint index) public restricted {
         Request storage request = requests[index]; // get the request from the requests array   
-
+        require(request.approvalCount > (approversCount / 2)); // make sure the request has more than 50% of the approvers voting for it    
         require(request.complete); // make sure the request has not already been completed 
 
         request.complete = true; // mark the request as complete 
