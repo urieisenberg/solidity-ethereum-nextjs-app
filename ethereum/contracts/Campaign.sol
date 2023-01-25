@@ -55,4 +55,12 @@ contract Campaign {
         request[index].approvals[msg.sender] = true; // add the address of the person who voted to the approvals mapping 
         request[index].approvalCount++; // increment the approvalCount
     } // called by each contributor to approve a spending request
+
+    function finalizeRequest(uint index) public restricted {
+        Request storage request = requests[index]; // get the request from the requests array   
+
+        require(request.complete); // make sure the request has not already been completed 
+
+        request.complete = true; // mark the request as complete 
+    }
 }
