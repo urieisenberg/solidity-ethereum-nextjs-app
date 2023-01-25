@@ -46,4 +46,13 @@ contract Campaign {
 
         requests.push(newRequest);
     } // called by the manager to create a new spending request
+
+    function approveRequest(uint index) public {
+        Request storage request = requests[index]; // get the request from the requests array   
+        require(approvers[msg.sender]); // make sure the person who is approving the request is an approver
+        require(!request[index].approvals[msg.sender]); // make sure the person has not already voted for the request
+
+        request[index].approvals[msg.sender] = true; // add the address of the person who voted to the approvals mapping 
+        request[index].approvalCount++; // increment the approvalCount
+    } // called by each contributor to approve a spending request
 }
