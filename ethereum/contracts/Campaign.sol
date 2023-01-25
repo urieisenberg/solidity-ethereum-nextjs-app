@@ -7,6 +7,10 @@ contract CampaignFactory {
       address newCampaign = new Campaign(minimu, msg.sender);
       deployedCampaigns.push(newCampaign);
     } // deploys a new instance of a campaign and stores the resulting address
+
+    function getDeployedCampaigns() public view returns (address[]){
+        return deployedCampaigns;
+    } // returns a list of all deployed campaigns
 }
 
 contract Campaign {
