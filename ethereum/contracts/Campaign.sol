@@ -1,5 +1,13 @@
 pragma solidity ^0.4.17;
 
+contract CampaignFactory {
+    address[] public deployedCampaigns; // array of addresses of all deployed campaigns
+
+    function createCampaign(uint minimum) public {
+        new Campaign(minimum);
+    } // deploys a new instance of a campaign and stores the resulting address
+}
+
 contract Campaign {
     struct Request {
         string description; // purpose of the request
