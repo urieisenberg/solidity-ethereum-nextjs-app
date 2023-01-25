@@ -4,7 +4,7 @@ contract CampaignFactory {
     address[] public deployedCampaigns; // array of addresses of all deployed campaigns
 
     function createCampaign(uint minimum) public {
-      address newCampaign = new Campaign(minimum);
+      address newCampaign = new Campaign(minimu, msg.sender);
       deployedCampaigns.push(newCampaign);
     } // deploys a new instance of a campaign and stores the resulting address
 }
@@ -30,8 +30,8 @@ contract Campaign {
         _; 
     } // modifier that makes sure only the manager can create a request 
 
-    function Campaign(uint256 minimum) public {
-        manager = msg.sender;
+    function Campaign(uint minimum, address creator ) public {
+        manager = creator;
         minimumContribution = minimum;
     } //  constructor function that sets the minimumContribution and the owner
 
