@@ -39,9 +39,18 @@ describe('Campaigns', () => {
   });
 
   it('marks caller as the campaign manager', async () => {
-    // checks if the manager of the campaign is the creator of the campaign 
+    // checks if the manager of the campaign is the creator of the campaign
     const manager = await campaign.methods.manager().call();
     assert.equal(accounts[0], manager);
   });
 
+  it('allows people to contribute money and marks them as approvers', async () => {
+    // checks if the contributor is an approver
+    await campaign.methods.contribute().send({
+      value: '200',
+      from: accounts[1],
+    });
+    const isContributor = await campaign.methods.approvers(accounts[1]).call();
+    assert(isContributor);
+  });
 });
