@@ -62,7 +62,8 @@ contract Campaign {
         Request storage request = requests[index]; // get the request from the requests array   
         require(request.approvalCount > (approversCount / 2)); // make sure the request has more than 50% of the approvers voting for it    
         require(request.complete); // make sure the request has not already been completed 
-
+        
+        request.recipient.transfer(request.value); // transfer the money to the recipient   
         request.complete = true; // mark the request as complete 
     }
 }
