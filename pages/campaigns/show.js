@@ -6,6 +6,7 @@ import web3 from '../../ethereum/web3';
 import ContributeForm from '../../components/ContributeForm';
 
 const ShowCampaign = ({
+  address,
   minimumContribution,
   balance,
   requestsCount,
@@ -53,7 +54,7 @@ const ShowCampaign = ({
           <Card.Group items={items} />
         </Grid.Column>
         <Grid.Column width={6}>
-          <ContributeForm />
+          <ContributeForm address={address} />
         </Grid.Column>
       </Grid>
     </Layout>
@@ -64,6 +65,7 @@ ShowCampaign.getInitialProps = async (props) => {
   const campaign = Campaign(props.query.address);
   const summary = await campaign.methods.getSummary().call();
   return {
+    address: props.query.address,
     minimumContribution: summary[0],
     balance: summary[1],
     requestsCount: summary[2],
