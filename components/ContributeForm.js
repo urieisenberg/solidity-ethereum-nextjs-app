@@ -42,6 +42,7 @@ const ContributeForm = ({ address }) => {
           onChange={(event) => setValue(event.target.value)}
         />
       </Form.Field>
+      <Message error header="Oops!" content={errorMessage} />
       <Button loading={loading} primary>
         Contribute!
       </Button>
