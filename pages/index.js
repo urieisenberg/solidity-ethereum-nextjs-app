@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'semantic-ui-react';
+import { Button, Card } from 'semantic-ui-react';
 import factory from '../ethereum/factory';
 
 function CampaignIndex({ campaigns }) {
@@ -9,7 +9,7 @@ function CampaignIndex({ campaigns }) {
     const items = campaigns.map((address) => {
       return {
         header: address,
-        description: <a>View Campaign</a>,
+        description: <a></a>,
         fluid: true,
       };
     });
@@ -26,6 +26,7 @@ function CampaignIndex({ campaigns }) {
       />
       <h3>Open Campaigns</h3>
       <Card.Group items={renderCampaigns()} />
+      <Button content="Create Campaign" icon="add circle" primary />
     </div>
   );
 }
