@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { Layout } from '../../components/Layout';
 
 const ShowCampaign = () => {
   return (
-    <div>ShowCampaign</div>
-  )
-}
+    <Layout>
+      <h3>Show Campaign</h3>
+    </Layout>
+  );
+};
 
-export default ShowCampaign
+export default ShowCampaign;
