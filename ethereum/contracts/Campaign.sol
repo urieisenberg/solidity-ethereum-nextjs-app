@@ -95,4 +95,8 @@ contract Campaign {
             manager
         );
     } // returns a summary of the campaign for the front end
+
+    function getRequestsCount() public view returns (uint256) {
+        return requests.length;
+    } // returns the number of requests for the front end
 }
