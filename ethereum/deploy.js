@@ -1,14 +1,10 @@
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 const Web3 = require('web3');
-require('dotenv').config({path: '../.env'});
 const compiledFactory = require('./build/CampaignFactory.json');
+import { mnemonic, infuraKey } from './const';
 
-const mnemonic = process.env.MNEMONIC;
-const infuraKey = process.env.INFURA_KEY;
-console.log('mnemonic', mnemonic);
 
 const provider = new HDWalletProvider(mnemonic, infuraKey);
-
 
 const web3 = new Web3(provider);
 
