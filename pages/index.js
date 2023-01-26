@@ -2,10 +2,10 @@ import React from 'react';
 import { Button, Card } from 'semantic-ui-react';
 import factory from '../ethereum/factory';
 
-function CampaignIndex({ campaigns }) {
+const CampaignIndex = ({ campaigns }) => {
   console.log(campaigns);
 
-  function renderCampaigns() {
+  const renderCampaigns = () => {
     const items = campaigns.map((address) => {
       return {
         header: address,
@@ -15,7 +15,7 @@ function CampaignIndex({ campaigns }) {
     });
 
     return items;
-  }
+  };
 
   return (
     <div>
@@ -29,7 +29,7 @@ function CampaignIndex({ campaigns }) {
       <Button content="Create Campaign" icon="add circle" primary />
     </div>
   );
-}
+};
 
 CampaignIndex.getInitialProps = async () => {
   const campaigns = await factory.methods.getDeployedCampaigns().call();
