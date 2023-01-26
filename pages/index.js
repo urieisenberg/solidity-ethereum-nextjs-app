@@ -5,19 +5,13 @@ import factory from '../ethereum/factory';
 import { Link } from '../routes';
 
 const CampaignIndex = ({ campaigns }) => {
-  console.log(campaigns);
-
-  const renderCampaigns = () => {
-    const items = campaigns.map((address) => {
-      return {
-        header: address,
-        description: <Link route={`/campaigns/${address}`}>View Campaign</Link>,
-        fluid: true,
-      };
-    });
-
-    return items;
-  };
+  const items = campaigns.map((address) => {
+    return {
+      header: address,
+      description: <Link route={`/campaigns/${address}`}>View Campaign</Link>,
+      fluid: true,
+    };
+  });
 
   return (
     <div>
@@ -31,7 +25,7 @@ const CampaignIndex = ({ campaigns }) => {
             primary
           />
         </Link>
-        <Card.Group items={renderCampaigns()} />
+        <Card.Group items={items} />
       </Layout>
     </div>
   );
