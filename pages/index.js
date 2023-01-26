@@ -21,9 +21,14 @@ const CampaignIndex = ({ campaigns }) => {
   return (
     <div>
       <Layout>
-        <h3>Open Campaigns</h3>
+        <h3>Open Campaigns</h3>{' '}
+        <Button
+          floated="right"
+          content="Create Campaign"
+          icon="add circle"
+          primary
+        />
         <Card.Group items={renderCampaigns()} />
-        <Button content="Create Campaign" icon="add circle" primary />
       </Layout>
     </div>
   );
