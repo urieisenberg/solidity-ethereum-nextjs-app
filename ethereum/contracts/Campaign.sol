@@ -85,7 +85,13 @@ contract Campaign {
     function getSummary()
         public
         view
-        reutrns(uint256, uint256, uint256, uint256, address)
+        returns (
+            uint256,
+            uint256,
+            uint256,
+            uint256,
+            address
+        )
     {
         return (
             minimumContribution,
@@ -94,9 +100,9 @@ contract Campaign {
             approversCount,
             manager
         );
-    } // returns a summary of the campaign for the front end
+    } // returns a summary of the campaign
 
     function getRequestsCount() public view returns (uint256) {
         return requests.length;
-    } // returns the number of requests for the front end
+    } // returns the number of requests
 }
