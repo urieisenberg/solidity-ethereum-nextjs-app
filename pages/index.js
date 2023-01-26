@@ -11,7 +11,7 @@ const CampaignIndex = ({ campaigns }) => {
     const items = campaigns.map((address) => {
       return {
         header: address,
-        description: <a></a>,
+        description: <Link route={`/campaigns/${address}`}>View Campaign</Link>,
         fluid: true,
       };
     });
