@@ -81,4 +81,18 @@ contract Campaign {
         request.recipient.transfer(request.value); // transfer the money to the recipient
         request.complete = true; // mark the request as complete
     } // after a request has gotten enough approvals, the manager can call this to get money sent to the vendor
+
+    function getSummary()
+        public
+        view
+        reutrns(uint256, uint256, uint256, uint256, address)
+    {
+        return (
+            minimumContribution,
+            this.balance,
+            requests.length,
+            approversCount,
+            manager
+        );
+    } // returns a summary of the campaign for the front end
 }
