@@ -8,6 +8,7 @@ module.exports = {
   env: {
     MNEMONIC: process.env.MNEMONIC,
     INFURA: process.env.INFURA,
-    ADDRESS: process.env.ADDRESS,
+    ACCOUNT_ADDRESS: process.env.ACCOUNT_ADDRESS,
+    CONTRACT_ADDRESS: process.env.CONTRACT_ADDRESS,
   },
 };
