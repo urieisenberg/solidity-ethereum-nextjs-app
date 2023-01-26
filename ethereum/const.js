@@ -1,7 +1,7 @@
 require('dotenv').config({ path: '../.env' });
 
-const mnemonic = process.env.MNEMONIC;
-const infuraKey = process.env.INFURA_KEY;
-const address = process.env.ADDRESS;
+const MNEMONIC = process.env.MNEMONIC;
+const INFURA = process.env.INFURA;
+const ADDRESS = process.env.ADDRESS;
 
-module.exports = { mnemonic, infuraKey, address };
+module.exports = { MNEMONIC, INFURA, ADDRESS };
