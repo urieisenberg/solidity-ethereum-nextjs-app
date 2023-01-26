@@ -1,9 +1,9 @@
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 const Web3 = require('web3');
 const compiledFactory = require('./build/CampaignFactory.json');
-const { mnemonic, infuraKey } = require('./const');
+const { MNEMONIC, INFURA } = require('./const');
 
-const provider = new HDWalletProvider(mnemonic, infuraKey);
+const provider = new HDWalletProvider(MNEMONIC, INFURA);
 
 const web3 = new Web3(provider);
 
