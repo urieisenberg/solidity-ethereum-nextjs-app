@@ -1,7 +1,8 @@
 import React from 'react';
+import Layout from '../../components/Layout';
 
 const NewCampaign = () => {
-  return <div>New</div>;
+  return <Layout>New Campaign</Layout>;
 };
 
 export default NewCampaign;
