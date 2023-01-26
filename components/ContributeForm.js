@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Form, Button, Message, Input } from 'semantic-ui-react';
-import Campaign from '../../ethereum/campaign';
-import web3 from '../../ethereum/web3';
-import { Router } from '../../routes';
+import Campaign from '../ethereum/campaign';
+import web3 from '../ethereum/web3';
+import { Router } from '../routes';
 
 const ContributeForm = ({ address }) => {
   const [value, setValue] = useState('');
