@@ -11,6 +11,7 @@ const ContributeForm = ({ address }) => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
+    setErrorMessage('');
     setLoading(true);
 
     const campaign = Campaign(address);
