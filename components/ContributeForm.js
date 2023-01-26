@@ -6,9 +6,12 @@ import { Router } from '../../routes';
 
 const ContributeForm = ({ address }) => {
   const [value, setValue] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
 
     const campaign = Campaign(address);
 
@@ -21,12 +24,15 @@ const ContributeForm = ({ address }) => {
 
       Router.replaceRoute(`/campaigns/${address}`);
     } catch (err) {
-      console.log(err);
+      setErrorMessage(err.message);
     }
+
+    setLoading(false);
+    setValue('');
   };
 
   return (
-    <Form onSubmit={onSubmit}>
+    <Form onSubmit={onSubmit} error={!!errorMessage}>
       <Form.Field>
         <label>Amount to Contribute</label>
         <Input
@@ -36,7 +42,9 @@ const ContributeForm = ({ address }) => {
           onChange={(event) => setValue(event.target.value)}
         />
       </Form.Field>
-      <Button primary>Contribute!</Button>
+      <Button loading={loading} primary>
+        Contribute!
+      </Button>
     </Form>
   );
 };
