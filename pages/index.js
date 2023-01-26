@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Card } from 'semantic-ui-react';
+import Layout from '../components/Layout';
 import factory from '../ethereum/factory';
 
 const CampaignIndex = ({ campaigns }) => {
@@ -19,14 +20,11 @@ const CampaignIndex = ({ campaigns }) => {
 
   return (
     <div>
-      <link
-        async
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/semantic-ui@2/dist/semantic.min.css"
-      />
-      <h3>Open Campaigns</h3>
-      <Card.Group items={renderCampaigns()} />
-      <Button content="Create Campaign" icon="add circle" primary />
+      <Layout>
+        <h3>Open Campaigns</h3>
+        <Card.Group items={renderCampaigns()} />
+        <Button content="Create Campaign" icon="add circle" primary />
+      </Layout>
     </div>
   );
 };
