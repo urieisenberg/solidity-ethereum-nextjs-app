@@ -2,6 +2,7 @@ import React from 'react';
 import { Card } from 'semantic-ui-react';
 import Layout from '../../components/Layout';
 import Campaign from '../../ethereum/campaign';
+import web3 from '../../ethereum/web3';
 
 const ShowCampaign = ({
   minimumContribution,
@@ -34,6 +35,12 @@ const ShowCampaign = ({
       header: approversCount,
       meta: 'Number of Approvers',
       description: 'Number of people who have already donated to this campaign',
+    },
+    {
+      header: web3.utils.fromWei(balance, 'ether'),
+      meta: 'Campaign Balance (ether)',
+      description:
+        'The balance is how much money this campaign has left to spend.',
     },
   ];
 
