@@ -4,8 +4,8 @@ contract CampaignFactory {
     address payable[] public deployedCampaigns; // array of addresses of all deployed campaigns
 
     function createCampaign(uint256 minimum) public {
-        address newCampaign = new Campaign(minimum, msg.sender);
-        deployedCampaigns.push(newCampaign);
+        address newCampaign = address(new Campaign(minimum, msg.sender));
+        deployedCampaigns.push(payable(newCampaign));
     } // deploys a new instance of a campaign and stores the resulting address
 
     function getDeployedCampaigns()
