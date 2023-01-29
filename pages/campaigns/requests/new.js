@@ -5,13 +5,27 @@ import web3 from '../../../ethereum/web3';
 import { Router, Link } from '../../../routes';
 import Layout from '../../../components/Layout';
 
-const NewRequest = () => {
+const NewRequest = ({ address }) => {
   const [description, setDescription] = useState('');
   const [value, setValue] = useState('');
   const [recipient, setRecipient] = useState('');
 
+
   const onSubmit = async (event) => {
     event.preventDefault();
+
+    const campaign = Campaign(address);
+    try {
+      const accounts = await web3.eth.getAccounts();
+      await campaign.methods
+        .createRequest(description, web3.utils.toWei(value, 'ether'), recipient)
+        .send({
+          from: accounts[0],
+        });
+      Router.pushRoute(`/campaigns/${address}/requests`);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
