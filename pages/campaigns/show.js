@@ -52,6 +52,7 @@ const ShowCampaign = ({
       <h3>Show Campaign</h3>
       <Grid>
         <Grid.Column width={10}>
+          <Card.Group items={items} />
           <Link route={`/campaigns/${address}/requests`}>
             <Button primary>View Requests</Button>
           </Link>
