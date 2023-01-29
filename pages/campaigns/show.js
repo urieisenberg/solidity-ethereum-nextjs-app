@@ -51,15 +51,21 @@ const ShowCampaign = ({
     <Layout>
       <h3>Show Campaign</h3>
       <Grid>
-        <Grid.Column width={10}>
-          <Card.Group items={items} />
-          <Link route={`/campaigns/${address}/requests`}>
-            <Button primary>View Requests</Button>
-          </Link>
-        </Grid.Column>
-        <Grid.Column width={6}>
-          <ContributeForm address={address} />
-        </Grid.Column>
+        <Grid.Row>
+          <Grid.Column width={10}>
+            <Card.Group items={items} />
+          </Grid.Column>
+          <Grid.Column width={6}>
+            <ContributeForm address={address} />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column>
+            <Link route={`/campaigns/${address}/requests`}>
+              <Button primary>View Requests</Button>
+            </Link>
+          </Grid.Column>
+        </Grid.Row>
       </Grid>
     </Layout>
   );
