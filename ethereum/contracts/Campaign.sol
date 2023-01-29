@@ -8,9 +8,13 @@ contract CampaignFactory {
         deployedCampaigns.push(newCampaign);
     } // deploys a new instance of a campaign and stores the resulting address
 
-    function getDeployedCampaigns() public view returns (address[]) {
+    function getDeployedCampaigns()
+        public
+        view
+        returns (address payable[] memory)
+    {
         return deployedCampaigns;
-    } // returns a list of all deployed campaigns
+    } // returns the array of deployed campaigns addresses
 }
 
 contract Campaign {
