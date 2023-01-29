@@ -1,9 +1,10 @@
 import React from 'react';
-import { Card, Grid } from 'semantic-ui-react';
+import { Card, Grid, Button } from 'semantic-ui-react';
 import Layout from '../../components/Layout';
 import Campaign from '../../ethereum/campaign';
 import web3 from '../../ethereum/web3';
 import ContributeForm from '../../components/ContributeForm';
+import { Link } from '../../routes';
 
 const ShowCampaign = ({
   address,
@@ -51,7 +52,9 @@ const ShowCampaign = ({
       <h3>Show Campaign</h3>
       <Grid>
         <Grid.Column width={10}>
-          <Card.Group items={items} />
+          <Link route={`/campaigns/${address}/requests`}>
+            <Button primary>View Requests</Button>
+          </Link>
         </Grid.Column>
         <Grid.Column width={6}>
           <ContributeForm address={address} />
