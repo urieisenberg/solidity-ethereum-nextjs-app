@@ -24,7 +24,9 @@ const input = {
   },
 };
 
-const output = solc.compile(source, 1).contracts;
+const output = JSON.parse(solc.compile(JSON.stringify(input))).contracts[
+  'Campaign.sol'
+];
 
 fs.ensureDirSync(buildPath); // creates build folder if it doesn't exist
 
