@@ -54,6 +54,7 @@ const NewRequest = ({ address }) => {
             onChange={(e) => setRecipient(e.target.value)}
           />
         </Form.Field>
+        <Message error header="Oops!" content={errorMessage} />
         <Button loading={loading} primary>
           Create!
         </Button>
