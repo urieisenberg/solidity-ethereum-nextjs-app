@@ -38,7 +38,7 @@ contract Campaign {
         _;
     } // modifier that makes sure only the manager can create a request
 
-    function Campaign(uint256 minimum, address creator) public {
+    constructor(uint256 minimum, address creator) {
         manager = creator;
         minimumContribution = minimum;
     } //  constructor function that sets the minimumContribution and the owner
