@@ -9,12 +9,15 @@ const NewRequest = ({ address }) => {
   const [description, setDescription] = useState('');
   const [value, setValue] = useState('');
   const [recipient, setRecipient] = useState('');
-
+  const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = async (event) => {
     event.preventDefault();
 
     const campaign = Campaign(address);
+    setLoading(true);
+    setErrorMessage('');
     try {
       const accounts = await web3.eth.getAccounts();
       await campaign.methods
@@ -24,14 +27,15 @@ const NewRequest = ({ address }) => {
         });
       Router.pushRoute(`/campaigns/${address}/requests`);
     } catch (err) {
-      console.log(err);
+      setErrorMessage(err.message);
     }
+    setLoading(false);
   };
 
   return (
     <Layout>
       <h3>Create a Request</h3>
-      <Form onSubmit={onSubmit}>
+      <Form onSubmit={onSubmit} error={!!errorMessage}>
         <Form.Field>
           <label>Description</label>
           <Input
@@ -50,7 +54,9 @@ const NewRequest = ({ address }) => {
             onChange={(e) => setRecipient(e.target.value)}
           />
         </Form.Field>
-        <Button primary>Create!</Button>
+        <Button loading={loading} primary>
+          Create!
+        </Button>
       </Form>
     </Layout>
   );
