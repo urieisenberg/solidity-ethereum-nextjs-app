@@ -51,19 +51,16 @@ contract Campaign {
     } // called when someone wants to donate money to the campaign and become an approver
 
     function createRequest(
-        string description,
+        string memory description,
         uint256 value,
         address recipient
     ) public restricted {
-        Request memory newRequest = Request({
-            description: description,
-            value: value,
-            recipient: recipient,
-            complete: false,
-            approvalCount: 0
-        });
-
-        requests.push(newRequest);
+        Request storage newRequest = requests.push(); // create a new request and add it to the requests array
+        newRequest.description = description; // set the description of the request
+        newRequest.value = value; // set the value of the request
+        newRequest.recipient = recipient; // set the recipient of the request
+        newRequest.complete = false; // set the complete status of the request to false
+        newRequest.approvalCount = 0; // set the approvalCount of the request to 0
     } // called by the manager to create a new spending request
 
     function approveRequest(uint256 index) public {
