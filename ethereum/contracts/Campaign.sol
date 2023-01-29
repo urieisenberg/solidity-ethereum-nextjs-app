@@ -1,7 +1,7 @@
 pragma solidity ^0.8.9;
 
 contract CampaignFactory {
-    address payable[] public deployedCampaigns; // array of addresses of all deployed campaigns
+    address payable[] public deployedCampaigns; // array of addresses for all deployed campaigns
 
     function createCampaign(uint256 minimum) public {
         address newCampaign = address(new Campaign(minimum, msg.sender));
@@ -79,7 +79,7 @@ contract Campaign {
         require(request.approvalCount > (approversCount / 2)); // make sure the request has more than 50% of the approvers voting for it
         require(!request.complete); // make sure the request has not already been completed
 
-        request.recipient.transfer(request.value); // transfer the money to the recipient
+        payable(request.recipient).transfer(request.value); // transfer the money to the recipient
         request.complete = true; // mark the request as complete
     } // after a request has gotten enough approvals, the manager can call this to get money sent to the vendor
 
