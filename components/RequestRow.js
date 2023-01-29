@@ -15,6 +15,14 @@ const RequestRow = ({ id, request, address, approversCount }) => {
     });
   };
 
+  const onFinalize = async () => {
+    const campaign = Campaign(address);
+    const accounts = await web3.eth.getAccounts();
+    await campaign.methods.finalizeRequest(id).send({
+      from: accounts[0],
+    });
+  };
+
   return (
     <Row>
       <Cell>{id}</Cell>
@@ -25,8 +33,13 @@ const RequestRow = ({ id, request, address, approversCount }) => {
         {request.approvalCount}/{approversCount}
       </Cell>
       <Cell>
-        <Button color="green" basi onClick={onApprove}>
+        <Button color="green" basic onClick={onApprove}>
           Approve
+        </Button>
+      </Cell>
+      <Cell>
+        <Button color="teal" basic onClick={onFinalize}>
+          Finalize
         </Button>
       </Cell>
     </Row>
