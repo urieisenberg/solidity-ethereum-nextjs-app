@@ -25,7 +25,7 @@ const RequestRow = ({ id, request, address, approversCount }) => {
   };
 
   return (
-    <Row>
+    <Row disabled={complete} positive={readyToFinalize && !complete}>
       <Cell>{id}</Cell>
       <Cell>{description}</Cell>
       <Cell>{web3.utils.fromWei(value, 'ether')}</Cell>
