@@ -15,7 +15,7 @@ beforeEach(async () => {
   accounts = await web3.eth.getAccounts(); // returns a list of unlocked accounts
 
   factory = await new web3.eth.Contract(compiledFactory.abi) // interface is the ABI
-    .deploy({ data: compiledFactory.bytecode }) // bytecode is the compiled contract
+    .deploy({ data: compiledFactory.evm.bytecode.object}) // bytecode is the compiled contract
     .send({ from: accounts[0], gas: '1000000' }); // deploys the contract
 
   await factory.methods.createCampaign('100').send({
