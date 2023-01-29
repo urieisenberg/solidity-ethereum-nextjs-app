@@ -5,7 +5,8 @@ import Campaign from '../ethereum/campaign';
 
 const RequestRow = ({ id, request, address, approversCount }) => {
   const { Row, Cell } = Table;
-  const { description, value, recipient } = request;
+  const { description, value, recipient, complete } = request;
+  const readyToFinalize = request.approvalCount > approversCount / 2;
 
   const onApprove = async () => {
     const campaign = Campaign(address);
@@ -32,16 +33,21 @@ const RequestRow = ({ id, request, address, approversCount }) => {
       <Cell>
         {request.approvalCount}/{approversCount}
       </Cell>
-      <Cell>
-        <Button color="green" basic onClick={onApprove}>
-          Approve
-        </Button>
-      </Cell>
-      <Cell>
-        <Button color="teal" basic onClick={onFinalize}>
-          Finalize
-        </Button>
-      </Cell>
+      {complete ? null : (
+        <>
+          <Cell>
+            <Button color="green" basic onClick={onApprove}>
+              Approve
+            </Button>
+          </Cell>
+
+          <Cell>
+            <Button color="teal" basic onClick={onFinalize}>
+              Finalize
+            </Button>
+          </Cell>
+        </>
+      )}
     </Row>
   );
 };
